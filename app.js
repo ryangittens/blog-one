@@ -13,6 +13,14 @@ site.init({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  uploadfs: {
+    backend: 's3',
+    secret: 'AKIAJ72NY4ZFVEJTZPCQ',
+    key: 'GFD/WcQeicpVROpB0r4x9ybusKe+GiE8oRnxTSFM',
+    bucket: 'apos2'
+  // region: 'us-west-2'
+  },
+
   // Force a2 to prefix all of its URLs. It still
   // listens on its own port, but you can configure
   // your reverse proxy to send it traffic only
@@ -116,6 +124,8 @@ site.init({
       files: ["./public/js/modules/_site.js"]
     },
     'apostrophe-demo-login': {
+    },
+    'apostrophe-forms': {
     }
   },
 
