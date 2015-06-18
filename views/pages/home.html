@@ -10,8 +10,11 @@
   <div class="block content">
     <div class="inner">
       <div class="demo-pageheader">
+        {% set username = "ryan"%}
+        {{username}}
+        {% set username = "gittens"%}
+        {{username}}
         <img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
-        <p><button id="showMenu">Show Menu</button></p>
         {{ aposArea(page, 'homepageText', {
           textOnly: true,
           styles: [

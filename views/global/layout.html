@@ -20,38 +20,39 @@
           {{ nav(page, {classes: 'off-canvas-nav', logo: true, showChildren: true}) }}
         </div>
       {% endblock%}
+      {% if outerClass %}<div class="{{outerClass}}">{% endif %}
+        {% block header %}
+          <div class="block top">
+              <div class="inner demo-inner">
+                <header>
+                 <p><button id="showMenu">Show Menu</button></p> 
+                  <a href="#" class="off-canvas-trigger hide-desktop">
+                    <svg class="a-toolbox">
+                      <use xlink:href="#a-toolbox" />
+                    </svg>
+                  </a>
 
-      {% block header %}
-        <div class="block top">
-            <div class="inner demo-inner">
-              <header>
-                
-                <a href="#" class="off-canvas-trigger hide-desktop">
-                  <svg class="a-toolbox">
-                    <use xlink:href="#a-toolbox" />
-                  </svg>
-                </a>
-
-              </header>
-            {% block headerContent %}
-            {% endblock %}
+                </header>
+              {% block headerContent %}
+              {% endblock %}
+            </div>
           </div>
-        </div>
-        <div class="block header {% block upperClass %}{% endblock %}">
-          {% block headerBackground %}{% endblock %}
+          <div class="block header {% block upperClass %}{% endblock %}">
+            {% block headerBackground %}{% endblock %}
 
-        </div>
-      {% endblock %}
-
-      {% block main %}
-        {# most content will be just fine sitting within our 'block' class, but we always #}
-        {# have the option to override the 'main' block if we want a little more control. #}
-        {% block mainContent %}
+          </div>
         {% endblock %}
-      {% endblock %}
 
-      {% block extraContent %}
-      {% endblock %}
+        {% block main %}
+          {# most content will be just fine sitting within our 'block' class, but we always #}
+          {# have the option to override the 'main' block if we want a little more control. #}
+          {% block mainContent %}
+          {% endblock %}
+        {% endblock %}
+
+        {% block extraContent %}
+        {% endblock %}
+      {% if outerClass %}</div>{% endif %}
 
       {# notice that this footer uses global areas: if we want editable content to appear #}
       {# on every page that inherits this one we want to use the global object instead of #}

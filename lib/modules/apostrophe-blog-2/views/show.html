@@ -1,5 +1,7 @@
 {%- extends 'layout.html' -%}
 {%- include 'blogMacros.html' -%}
+{# set class here for desired blog article effect #}
+{% set outerClass = "intro-effect-push blog-container container" %}
 
 {% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
 
@@ -8,72 +10,216 @@
   {{ siteTitle }} &ndash; {{ page.title | e }}
 {%- endblock -%}
 
-{% block upperClass %}demo-blog-header-background{% endblock %}
-{% block headerBackground %}
-{% set image = page.image.items[0]._items[0] %}
-  <div class="block demo-blog-header-block">
-<!--   <div class="block demo-blog-header-block" {% if image %}style="background-image:url({{ aposFilePath(image) }})" {% endif %}>
- -->  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }}
-    <div class="demo-blog-header-background-slideshow" >
-      <div class="demo-blog-header inner">
-        <div class="demo-blog-header-wrapper">
+{% block upperClass %}block {% endblock %}
+
+  {% block headerBackground %}
+  {% set image = page.image.items[0]._items[0] %}
+      <div class="blog-header">
+        <div class="bg-img">
+          <!--   <div class="block demo-blog-header-block" {% if image %}style="background-image:url({{ aposFilePath(image) }})" {% endif %}>
+   -->  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }}
+        </div>
+        <div class="blog-title">
           <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
           <h3>{{ page.title }}</h3>
           {% if page.authorId %}
             <h5>by {{ page._author.title }}</h5>
           {% endif %}
         </div>
-
+      </div> <!-- blog-header end -->
+      <button class="trigger" data-info="Click to see the header effect"><span>Trigger</span></button>
+      <div class="blog-title2">
+        <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
+        <h3>{{ page.title }}</h3>
+        {% if page.authorId %}
+          <h5>by {{ page._author.title }}</h5>
+        {% endif %}
       </div>
-      <div class="demo-blog-header-slideshow-control">
+  {% endblock %}
 
-      </div>
+  {% block headerContent %}{% endblock %}
 
-    </div>
-  </div>
+  {# Facebook image, so it doesn't hoover up images from the dropdown menus #}
+  {# Works only if you specify an absolute URL for uploadsUrl in data/local.js #}
+  {% set firstImage = aposAreaImage(page, 'image') %}
 
-{% endblock %}
+  {% block extraHead %}
+    {% if firstImage %}
+      <meta property="og:image" content="{{ aposFilePath(firstImage) }}" />
+    {% endif %}
+  {% endblock %}
 
-{% block headerContent %}{% endblock %}
-
-{# Facebook image, so it doesn't hoover up images from the dropdown menus #}
-{# Works only if you specify an absolute URL for uploadsUrl in data/local.js #}
-{% set firstImage = aposAreaImage(page, 'image') %}
-
-{% block extraHead %}
-  {% if firstImage %}
-    <meta property="og:image" content="{{ aposFilePath(firstImage) }}" />
-  {% endif %}
-{% endblock %}
-
-{% block mainContent %}
-  <div class="block">
-    <div class="inner">
-      <div class="demo-blog-gutter">
-        <div class="demo-blog-author">
-          <div class="demo-blog-author-image">
-            {{ aposSingleton(page._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false}) }}
-          </div>
-          <div class="demo-blog-author-bio">
-            {% if page.authorId %}
-              {{ aposAreaPlaintext(page._author, 'body', { truncate: 100 }) }}
-            {% endif %}
+  {% block mainContent %}
+    <div class="block blog-content">
+      <div class="inner">
+        <div class="demo-blog-gutter">
+          <div class="demo-blog-author">
+            <div class="demo-blog-author-image">
+              {{ aposSingleton(page._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false}) }}
+            </div>
+            <div class="demo-blog-author-bio">
+              {% if page.authorId %}
+                {{ aposAreaPlaintext(page._author, 'body', { truncate: 100 }) }}
+              {% endif %}
+            </div>
           </div>
         </div>
+        <div class="content">
+          {{ aposArea(page, 'body', {
+            controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
+            styles: [
+              { value: 'p', label: 'Text' },
+              { value: 'h3', label: 'Heading' },
+              { value: 'h5', label: 'Subheading' },
+              { value: 'code', label: 'Code' }
+            ],
+            lockups: ['left', 'right']
+          }) }}
+        </div>
       </div>
-      <div class="demo-blog-content">
-        {{ aposArea(page, 'body', {
-          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
-          styles: [
-            { value: 'p', label: 'Text' },
-            { value: 'h3', label: 'Heading' },
-            { value: 'h5', label: 'Subheading' },
-            { value: 'code', label: 'Code' }
-          ],
-          lockups: ['left', 'right']
-        }) }}
-      </div>
-    </div>
 
-  </div>
-{% endblock %}
+    </div>
+    <script>
+      (function() {
+
+        // detect if IE : from http://stackoverflow.com/a/16657946    
+        var ie = (function(){
+          var undef,rv = -1; // Return value assumes failure.
+          var ua = window.navigator.userAgent;
+          var msie = ua.indexOf('MSIE ');
+          var trident = ua.indexOf('Trident/');
+
+          if (msie > 0) {
+            // IE 10 or older => return version number
+            rv = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+          } else if (trident > 0) {
+            // IE 11 (or newer) => return version number
+            var rvNum = ua.indexOf('rv:');
+            rv = parseInt(ua.substring(rvNum + 3, ua.indexOf('.', rvNum)), 10);
+          }
+
+          return ((rv > -1) ? rv : undef);
+        }());
+
+
+        // disable/enable scroll (mousewheel and keys) from http://stackoverflow.com/a/4770179          
+        // left: 37, up: 38, right: 39, down: 40,
+        // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+        var keys = [32, 37, 38, 39, 40], wheelIter = 0;
+
+        function preventDefault(e) {
+          e = e || window.event;
+          if (e.preventDefault)
+          e.preventDefault();
+          e.returnValue = false;  
+        }
+
+        function keydown(e) {
+          for (var i = keys.length; i--;) {
+            if (e.keyCode === keys[i]) {
+              preventDefault(e);
+              return;
+            }
+          }
+        }
+
+        function touchmove(e) {
+          preventDefault(e);
+        }
+
+        function wheel(e) {
+          // for IE 
+          //if( ie ) {
+            //preventDefault(e);
+          //}
+        }
+
+        function disable_scroll() {
+          window.onmousewheel = document.onmousewheel = wheel;
+          document.onkeydown = keydown;
+          document.body.ontouchmove = touchmove;
+        }
+
+        function enable_scroll() {
+          window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;  
+        }
+
+        var docElem = window.document.documentElement,
+          scrollVal,
+          isRevealed, 
+          noscroll, 
+          isAnimating,
+          container = document.querySelector( '.blog-container' ),
+          trigger = container.querySelector( 'button.trigger' );
+
+        function scrollY() {
+          return window.pageYOffset || docElem.scrollTop;
+        }
+        
+        function scrollPage() {
+          scrollVal = scrollY();
+          
+          if( noscroll && !ie ) {
+            if( scrollVal < 0 ) return false;
+            // keep it that way
+            window.scrollTo( 0, 0 );
+          }
+
+          if( classie.has( container, 'notrans' ) ) {
+            classie.remove( container, 'notrans' );
+            return false;
+          }
+
+          if( isAnimating ) {
+            return false;
+          }
+          
+          if( scrollVal <= 0 && isRevealed ) {
+            toggle(0);
+          }
+          else if( scrollVal > 0 && !isRevealed ){
+            toggle(1);
+          }
+        }
+
+        function toggle( reveal ) {
+          isAnimating = true;
+          
+          if( reveal ) {
+            classie.add( container, 'modify' );
+          }
+          else {
+            noscroll = true;
+            disable_scroll();
+            classie.remove( container, 'modify' );
+          }
+
+          // simulating the end of the transition:
+          setTimeout( function() {
+            isRevealed = !isRevealed;
+            isAnimating = false;
+            if( reveal ) {
+              noscroll = false;
+              enable_scroll();
+            }
+          }, 600 );
+        }
+
+        // refreshing the page...
+        var pageScroll = scrollY();
+        noscroll = pageScroll === 0;
+        
+        disable_scroll();
+        
+        if( pageScroll ) {
+          isRevealed = true;
+          classie.add( container, 'notrans' );
+          classie.add( container, 'modify' );
+        }
+        
+        window.addEventListener( 'scroll', scrollPage );
+        trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
+      })();
+    </script>
+  {% endblock %}
+ 
