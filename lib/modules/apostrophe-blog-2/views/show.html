@@ -1,7 +1,7 @@
 {%- extends 'layout.html' -%}
 {%- include 'blogMacros.html' -%}
 {# set class here for desired blog article effect #}
-{% set outerClass = "intro-effect-push blog-container container" %}
+{% set outerClass = "intro-effect-side blog-container container" %}
 
 {% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
 
@@ -21,20 +21,22 @@
         </div>
         <div class="blog-title">
           <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
-          <h3>{{ page.title }}</h3>
+          <h1>{{ page.title }}</h1>
           {% if page.authorId %}
-            <h5>by {{ page._author.title }}</h5>
+            <p class="subline">by <strong> {{ page._author.title }} </strong></p>
           {% endif %}
         </div>
       </div> <!-- blog-header end -->
       <button class="trigger" data-info="Click to see the header effect"><span>Trigger</span></button>
+      <!-- uncomment for push effect
       <div class="blog-title2">
         <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
-        <h3>{{ page.title }}</h3>
+        <h1>{{ page.title }}</h1>
         {% if page.authorId %}
-          <h5>by {{ page._author.title }}</h5>
+          <p class="subline">by {{ page._author.title }}</p>
         {% endif %}
       </div>
+      -->
   {% endblock %}
 
   {% block headerContent %}{% endblock %}
@@ -80,7 +82,7 @@
 
     </div>
     <script>
-      (function() {
+      $(function() {
 
         // detect if IE : from http://stackoverflow.com/a/16657946    
         var ie = (function(){
@@ -219,7 +221,7 @@
         
         window.addEventListener( 'scroll', scrollPage );
         trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
-      })();
+      });
     </script>
   {% endblock %}
  

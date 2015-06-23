@@ -1,26 +1,24 @@
 {% extends "layout.html" %}
 
 {% block bodyClass %}{{ super() }} home-page{% endblock %}
+
 {# breadcrumbs are excluded from the homepage #}
 {% block breadcrumbs %}
 {% endblock %}
-
-
-  {% block headerContent %}
-    <div class="">
-      <!-- background video apos area -->
-      {{ aposArea(page, 'bg', {
-        controls: ['backgroundVideo']
-      }) }}
-    </div>
-  {% endblock %}
-
-
 
 {% block main %}
   <div class="block content">
     <div class="inner">
       <div class="demo-pageheader">
+        {{ aposArea(page, 'main', {
+          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video', 'backgroundVideo'],
+          styles: [
+            { value: 'p', label: 'Text' },
+            { value: 'h3', label: 'Title' },
+            { value: 'h5', label: 'Subtitle' }
+          ],
+          lockups: ['left', 'right']
+        }) }}
         <img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
         {{ aposArea(page, 'homepageText', {
           textOnly: true,
@@ -31,11 +29,11 @@
         }) }}
       </div>
     </div>
-    <!--<div class="demo-workspaces-marquee"></div>-->
+    <div class="demo-workspaces-marquee"></div>
     <div class="block content--bottom">
       <div class="inner demo-pageheader">
         {{ aposArea(page, 'main', {
-          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
+          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video', 'backgroundVideo'],
           styles: [
             { value: 'p', label: 'Text' },
             { value: 'h3', label: 'Title' },

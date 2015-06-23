@@ -1,8 +1,9 @@
 $(function() {
-	require('./modernizr.custom.menu.js');
   require('./demo-header.js');
-  require('./off-canvas.js');
+  //require('./off-canvas.js');
 	require('./classie.js');
+  require('./speedMenu/menu.js');
+  require('./speedMenu/motionblur.js');
+  require('./speedMenu/TweenMax.min.js');
   require('./menu.js');
-  
 });

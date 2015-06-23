@@ -116,6 +116,28 @@ site.init({
       files: ["./public/js/modules/_site.js"]
     },
     'apostrophe-demo-login': {
+    },
+    'apostrophe-schema-widgets': {
+      widgets: [
+        {
+          name: 'backgroundVideo',
+          label: 'Background Video',
+          instructions: 'Enter a label and paste a URL to create a link.',
+          schema: [
+            {
+              name: 'img',
+              type: 'singleton',
+              widgetType: 'slideshow',
+              label: 'Image'
+            },
+            {
+              name: 'url',
+              type: 'url',
+              label: 'Video URL'
+            }
+          ]
+        }
+      ]
     }
   },
 
