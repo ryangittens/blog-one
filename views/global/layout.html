@@ -20,62 +20,69 @@
   </div>
 -->
 {% endblock%}
-{% if outerClass %}<div class="{{outerClass}}">{% endif %}
-{% block header %}
-  <div class="block top">
+<div class="scroll-animate"> {# for parallax #}
+<div id="scroll-animate-main"> {# for parallax #}
+<div class="wrapper-parallax"> {# for parallax #}
+  {% block header %}
+    <div class="block top top-parallax">
       <div class="inner demo-inner">
-        <header>
-          {{ menu(page, {classes: 'menu'}) }}
-          <div class="burger">
-            <div class="burger__patty"></div>
-            <div class="burger__patty"></div>
-            <div class="burger__patty"></div>
-          </div>
-          
+          <header>
+            {{ menu(page, {classes: 'menu'}) }}
+            <div class="burger">
+              <div class="burger__patty"></div>
+              <div class="burger__patty"></div>
+              <div class="burger__patty"></div>
+            </div>
+            
 
-        </header>
-      {% block headerContent %}
-      {% endblock %}
-    </div>
-  </div>
-  <div class="block header {% block upperClass %}{% endblock %}">
-    {% block headerBackground %}{% endblock %}
-
-  </div>
-{% endblock %}
-
-{% block main %}
-  {# most content will be just fine sitting within our 'block' class, but we always #}
-  {# have the option to override the 'main' block if we want a little more control. #}
-  {% block mainContent %}
-  {% endblock %}
-{% endblock %}
-
-{% block extraContent %}
-{% endblock %}
-
-{# notice that this footer uses global areas: if we want editable content to appear #}
-{# on every page that inherits this one we want to use the global object instead of #}
-{# the page object. #}
-
-{% block footer %}
-  <footer class="block footer">
-    <div class="inner">
-      {% block footerContent %}
-        <div class="inline-middle width-50">
-          Apostrophe is led by <a href="http://punkave.com">P'unk Avenue</a> in Philadelphia, PA.
-        </div>{#
-      #}<div class="inline-middle width-50 align-right">
-          <a class="inline-top footer-logo" href="http://punkave.com">
-            <img src="/images/demo_logo_punk.png" class="" alt="P'unk Avenue" width="150" height="32" />
-          </a>
-        </div>
-      {% endblock %}
-    </div>
-    <div class="inner">
-      <div class="linode-credit">
-        Generously hosted by <a href="http://linode.com">linode</a>.
+          </header>
+        {% block headerContent %}
+        {% endblock %}
       </div>
     </div>
-  </footer>
-{% endblock %}
+    <div class="block header {% block upperClass %}{% endblock %}">
+      {% block headerBackground %}{% endblock %}
+
+    </div>
+  {% endblock %}
+
+  {% block main %}
+    <div class="all-content">
+    {# most content will be just fine sitting within our 'block' class, but we always #}
+    {# have the option to override the 'main' block if we want a little more control. #}
+      {% block mainContent %}
+      {% endblock %}
+    </div>
+  {% endblock %}
+
+  {% block extraContent %}
+  {% endblock %}
+
+  {# notice that this footer uses global areas: if we want editable content to appear #}
+  {# on every page that inherits this one we want to use the global object instead of #}
+  {# the page object. #}
+
+  {% block footer %}
+    <footer class="block footer">
+      <div class="inner">
+        {% block footerContent %}
+          <div class="inline-middle width-50">
+            Apostrophe is led by <a href="http://punkave.com">P'unk Avenue</a> in Philadelphia, PA.
+          </div>{#
+        #}<div class="inline-middle width-50 align-right">
+            <a class="inline-top footer-logo" href="http://punkave.com">
+              <img src="/images/demo_logo_punk.png" class="" alt="P'unk Avenue" width="150" height="32" />
+            </a>
+          </div>
+        {% endblock %}
+      </div>
+      <div class="inner">
+        <div class="linode-credit">
+          Generously hosted by <a href="http://linode.com">linode</a>.
+        </div>
+      </div>
+    </footer>
+  {% endblock %}
+</div>
+</div>
+</div>

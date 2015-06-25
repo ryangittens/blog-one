@@ -7,17 +7,21 @@
 
 
   {% block headerContent %}
-    <div class="">
+    <div class="background">
       <!-- background video apos area -->
       {{ aposArea(page, 'bg', {
         controls: ['backgroundVideo']
       }) }}
+    </div>
+    <div class="header-inner">
+
     </div>
   {% endblock %}
 
 
 
 {% block main %}
+<div class="all-content">
   <div class="block content">
     <div class="inner">
       <div class="demo-pageheader">
@@ -66,4 +70,5 @@
       }) }}
     </div>
   </div>
+</div>
 {% endblock %}

@@ -6,4 +6,5 @@ $(function() {
   require('./speedMenu/motionblur.js');
   require('./speedMenu/TweenMax.min.js');
   require('./menu.js');
+  require('./parallax.js');
 });
