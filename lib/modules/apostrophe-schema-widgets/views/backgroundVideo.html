@@ -1,19 +1,22 @@
-
+{# NB the following line! it gets the picture! #}
+{% set image = aposFilePath(aposAreaImage(item, 'img', {}), options) %}
 <section class="fullsize-video-bg">
-  <div id="video-viewport">
-		<video width="320" height="180" autoplay muted loop>
+  <div id="video-viewport" >
+		<video id="bg"  poster="{{ image }}" autoplay muted loop data-bg="{{ image }}" >
 			<source src="{{ item.url }}" type="video/mp4" />
 		</video>
 	</div>
 </section>
-	
-<script type="text/javascript" charset="utf-8" async defer>
+
+<script type="text/javascript" charset="utf-8" defer>
+//keeps video centered (smart responsiveness)
 	var min_w = 300;
 	var vid_w_orig;
 	var vid_h_orig;
 
 	$(function() {
 
+		
 	    vid_w_orig = parseInt($('video').attr('width'));
 	    vid_h_orig = parseInt($('video').attr('height'));
 
@@ -23,7 +26,6 @@
 	});
 
 	function fitVideo() {
-
 	    $('#video-viewport').width($('.fullsize-video-bg').width());
 	    $('#video-viewport').height($('.fullsize-video-bg').height());
 

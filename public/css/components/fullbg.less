@@ -5,13 +5,16 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -1;
+        will-change: transform;
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 video {
     display: block;
-    width: 100%;
-    height: auto;
+    min-height: 100vh;
+    min-width: 100vmax;
+    width: auto;
 }
 
 .fullsize-video-bg {
@@ -21,31 +24,10 @@ video {
     width: 100vw;
     overflow: hidden;
     position: absolute;
-    z-index: -1;
+    z-index: -100;
 }
 
-
-.fullsize-video-bg .inner {
-    display: table;
-    width: 100%;
-    max-width: 24em;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0;
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
-}
-
-.fullsize-video-bg .inner > div {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    padding: 0 2em;
-}
-
-
-
+/*------ full page intro ----------*/
 .home-page .top{
         height: 100vh;
         width: 100vw;
@@ -59,4 +41,9 @@ video {
   right: calc(@width + 2.6rem);
   width: @width;
   height: 2rem;
+}
+
+.apos-modal-preview #video-viewport{
+    position: relative;
+    // :)
 }

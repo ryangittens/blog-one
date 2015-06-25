@@ -122,13 +122,16 @@ site.init({
         {
           name: 'backgroundVideo',
           label: 'Background Video',
-          instructions: 'Enter a label and paste a URL to create a link.',
+          instructions: 'Enter a video url and select fallback image.',
           schema: [
             {
               name: 'img',
               type: 'singleton',
               widgetType: 'slideshow',
-              label: 'Image'
+              label: 'Image',
+              options: {
+                limit: 1
+              }
             },
             {
               name: 'url',

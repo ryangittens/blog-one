@@ -28,7 +28,7 @@
 {% macro menu(page, options) %}
 	<nav class="{% if options.classes%} {{options.classes}}{% endif%}">
 	    <div class="menu__brand">
-	      <a href=""><div class="logo"></div></a>
+	      <a href="/">{{ aposSingleton(global, 'logo', 'slideshow', { size: 'one-third', limit: 1 } ) }}</a>
 	    </div>
 	    <ul class="menu__list">
 	    	 <li class="menu__item">
@@ -40,7 +40,7 @@
 		    </li>
 		    {% for item in page.tabs %}
 		      <li class="menu__item">
-		        <a href="{{ item.url }}" {% if page.slug == item.slug %}class="active"{% endif %}>{{ item.title }}</a>
+		        <a href="{{ item.url }}" {% if page.slug == item.slug %}class="active menu__link"{% endif %}>{{ item.title }}</a>
 		      </li>
 		    {% endfor %}
 	    </ul>
