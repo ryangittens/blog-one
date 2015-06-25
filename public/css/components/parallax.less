@@ -37,10 +37,25 @@ padding-top: 2rem;
 
 .all-content
 {
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.15);
   z-index: 1;
   background: @light-gold;
+  min-height: 100vh;
 }
 
-.wrapper-parallax {
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+.home-page{
+  .all-content
+  {
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    background: @light-gold;
+  }
 }
+
+//don't use any margins on top or bottom!
+.demo-pageheader {
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+

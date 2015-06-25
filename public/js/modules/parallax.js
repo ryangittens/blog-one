@@ -19,13 +19,12 @@ function scrollFooter(scrollY, heightFooter)
 }
 
 $(window).load(function(){
+    //NB outerHeight vs height jquery!
     var windowHeight        = $(window).height(),
-    //NB oyterHeight vs height jquery!
         footerHeight        = $('footer').outerHeight(),
-        heightDocument      = (windowHeight) + ($('.all-content').height()) + ($('footer').outerHeight()) - 20;
-
-    // Definindo o tamanho do elemento pra animar
-    $('#scroll-animate, #scroll-animate-main').css({
+        heightDocument      = ($('.all-content').position().top) + ($('.all-content').outerHeight()) + ($('footer').outerHeight()) - 20;
+    // Size the parallax container (should be content plus footer plus fixed header..)
+    $('#scroll-animate-main').css({
         'height' :  heightDocument + 'px'
     });
 

@@ -20,11 +20,11 @@
   </div>
 -->
 {% endblock%}
-<div class="scroll-animate"> {# for parallax #}
+<div class="{{outerClass}}"> {# for blog (outerclass) #}
 <div id="scroll-animate-main"> {# for parallax #}
 <div class="wrapper-parallax"> {# for parallax #}
   {% block header %}
-    <div class="block top top-parallax">
+    <div class="block top">
       <div class="inner demo-inner">
           <header>
             {{ menu(page, {classes: 'menu'}) }}
@@ -46,14 +46,16 @@
     </div>
   {% endblock %}
 
-  {% block main %}
-    <div class="all-content">
-    {# most content will be just fine sitting within our 'block' class, but we always #}
-    {# have the option to override the 'main' block if we want a little more control. #}
-      {% block mainContent %}
-      {% endblock %}
-    </div>
-  {% endblock %}
+  <div class="all-content needed-for-parallax">
+    {% block main %}
+      
+      {# most content will be just fine sitting within our 'block' class, but we always #}
+      {# have the option to override the 'main' block if we want a little more control. #}
+        {% block mainContent %}
+        {% endblock %}
+      
+    {% endblock %}
+  </div>
 
   {% block extraContent %}
   {% endblock %}
