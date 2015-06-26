@@ -20,8 +20,8 @@
   </div>
 -->
 {% endblock%}
-<div class="{{outerClass}}"> {# for blog (outerclass) #}
-<div id="scroll-animate-main"> {# for parallax #}
+<div id="scroll-animate" class="{{outerClass}} "> {# for blog (outerclass), footer goes inside this #}
+<div id="scroll-animate-main"> {# for parallax footer goes outside this #}
 <div class="wrapper-parallax"> {# for parallax #}
   {% block header %}
     <div class="block top">
@@ -63,7 +63,8 @@
   {# notice that this footer uses global areas: if we want editable content to appear #}
   {# on every page that inherits this one we want to use the global object instead of #}
   {# the page object. #}
-
+</div>
+</div>
   {% block footer %}
     <footer class="block footer">
       <div class="inner">
@@ -85,6 +86,4 @@
       </div>
     </footer>
   {% endblock %}
-</div>
-</div>
 </div>

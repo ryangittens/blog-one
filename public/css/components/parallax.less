@@ -1,9 +1,14 @@
 /*------------------ css for parallax -------------------*/
+
+
 #scroll-animate-main
 {
+  position: fixed;
   width: 100%;
   left: 0;
-  //position: fixed;
+  will-change: transform;
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
 #heightPage,
@@ -41,6 +46,7 @@ padding-top: 2rem;
   z-index: 1;
   background: @light-gold;
   min-height: 100vh;
+  position: relative;
 }
 
 .home-page{
@@ -58,4 +64,17 @@ padding-top: 2rem;
   padding-top: 2rem;
 }
 
+#scroll-animate-main, footer
+{
+  -webkit-transition-property: all;
+     -moz-transition-property: all;
+      transition-property: all;
 
+  -webkit-transition-duration: 0.4s;
+     -moz-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+     -moz-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
