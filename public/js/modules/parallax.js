@@ -2,29 +2,27 @@
 function scrollFooter(scrollY, heightFooter)
 {
     // place footer where it supposed to be
-    console.log(scrollY);
-    console.log(heightFooter);
-
     if(scrollY >= heightFooter)
     {
         $('footer').css({
-             'transform' : 'translate(0, -' + heightFooter + 'px)'
+             'transform' : 'translateY(-' + heightFooter + 'px)'
         });      
     }
     else
     {
         $('footer').css({
-             'transform' : 'translate(0, 0)'
+             'transform' : 'translateY(0)'
         });
     }
 }
 
 $(window).load(function(){
-    //NB outerHeight vs height jquery!
+    //NB outerHeight vs height and .offset vs .position jquery!
     var windowHeight        = $(window).height(),
         footerHeight        = $('footer').outerHeight(),
-        heightDocument      = ($('.all-content').position().top) + ($('.all-content').outerHeight()) + ($('footer').outerHeight()) - 20;
+        heightDocument      = ($('.all-content').offset().top) + ($('.all-content').outerHeight()) + ($('footer').outerHeight()) - 20;
     // Size the parallax container (should be content plus footer plus fixed header..)
+    console.log(heightDocument)
     $('#scroll-animate-main, #scroll-animate').css({
         'height' :  heightDocument + 'px'
     });
@@ -36,7 +34,7 @@ $(window).load(function(){
         var scroll = window.scrollY;
 
         $('#scroll-animate-main').css({
-            'transform' : 'translate(0, -' + scroll + 'px)'
+            'transform' : 'translateY(-' + scroll + 'px)'
         });
 
         scrollFooter(scroll, footerHeight);

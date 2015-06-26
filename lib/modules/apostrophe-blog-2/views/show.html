@@ -54,12 +54,12 @@
   {% block mainContent %}
     <div class="block blog-content">
       <div class="inner">
-        <div class="demo-blog-gutter">
-          <div class="demo-blog-author">
-            <div class="demo-blog-author-image">
+        <div class="blog-gutter">
+          <div class="blog-author">
+            <div class="blog-author-image">
               {{ aposSingleton(page._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false}) }}
             </div>
-            <div class="demo-blog-author-bio">
+            <div class="blog-author-bio">
               {% if page.authorId %}
                 {{ aposAreaPlaintext(page._author, 'body', { truncate: 100 }) }}
               {% endif %}

@@ -21,8 +21,7 @@
 -->
 {% endblock%}
 <div id="scroll-animate" class="{{outerClass}} "> {# for blog (outerclass), footer goes inside this #}
-<div id="scroll-animate-main"> {# for parallax footer goes outside this #}
-<div class="wrapper-parallax"> {# for parallax #}
+
   {% block header %}
     <div class="block top">
       <div class="inner demo-inner">
@@ -40,31 +39,33 @@
         {% endblock %}
       </div>
     </div>
-    <div class="block header {% block upperClass %}{% endblock %}">
-      {% block headerBackground %}{% endblock %}
+  <div id="scroll-animate-main"> {# for parallax footer&header goes outside this #}
+  <div class="wrapper-parallax"> {# for parallax #}
+      <div class="block header {% block upperClass %}{% endblock %}">
+        {% block headerBackground %}{% endblock %}
 
-    </div>
-  {% endblock %}
-
-  <div class="all-content needed-for-parallax">
-    {% block main %}
-      
-      {# most content will be just fine sitting within our 'block' class, but we always #}
-      {# have the option to override the 'main' block if we want a little more control. #}
-        {% block mainContent %}
-        {% endblock %}
-      
+      </div>
     {% endblock %}
+
+    <div class="all-content needed-for-parallax">
+      {% block main %}
+        
+        {# most content will be just fine sitting within our 'block' class, but we always #}
+        {# have the option to override the 'main' block if we want a little more control. #}
+          {% block mainContent %}
+          {% endblock %}
+        
+      {% endblock %}
+    </div>
+
+    {% block extraContent %}
+    {% endblock %}
+
+    {# notice that this footer uses global areas: if we want editable content to appear #}
+    {# on every page that inherits this one we want to use the global object instead of #}
+    {# the page object. #}
   </div>
-
-  {% block extraContent %}
-  {% endblock %}
-
-  {# notice that this footer uses global areas: if we want editable content to appear #}
-  {# on every page that inherits this one we want to use the global object instead of #}
-  {# the page object. #}
-</div>
-</div>
+  </div>
   {% block footer %}
     <footer class="block footer">
       <div class="inner">
