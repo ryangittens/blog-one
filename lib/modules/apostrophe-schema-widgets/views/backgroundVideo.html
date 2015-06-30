@@ -1,8 +1,10 @@
 {# NB the following line! it gets the picture! #}
+{% if aposAreaImage(item, 'img', {}) %}
 {% set image = aposFilePath(aposAreaImage(item, 'img', {}), options) %}
+{% endif %}
 <section class="fullsize-video-bg">
   <div id="video-viewport" >
-		<video id="bg"  poster="{{ image }}" autoplay muted loop data-bg="{{ image }}" >
+		<video id="bg"  poster="{{ image }}" preload="auto" autoplay muted loop >
 			<source src="{{ item.url }}" type="video/mp4" />
 		</video>
 	</div>

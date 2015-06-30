@@ -76,6 +76,7 @@ site.init({
     // Styles required by the new editor, must go FIRST
     'apostrophe-editor-2': {},
     'apostrophe-ui-2': {},
+    'apostrophe-snippets': {},
     'apostrophe-blog-2': {
       perPage: 5,
       pieces: {
@@ -86,6 +87,11 @@ site.init({
             withType: 'person',
             idField: 'authorId',
             label: 'Author'
+          },
+          {
+            name: 'subtitle',
+            type: 'string',
+            label: 'Subtitle',
           }
         ]
       }
@@ -122,7 +128,7 @@ site.init({
         {
           name: 'backgroundVideo',
           label: 'Background Video',
-          instructions: 'Enter a video url and select fallback image.',
+          instructions: 'Enter a video url and select fallback image. Just an image can be used if you don\' want video',
           schema: [
             {
               name: 'img',

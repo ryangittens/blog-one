@@ -14,16 +14,18 @@
       }) }}
     </div>
     <div class="header-inner">
-
+      <div class="intro">
+        <h1>This is an Intro!</h1>
+      </div>
+      <button type="button" class="scroll-button flash"></button>
     </div>
+    
   {% endblock %}
-
-
 
 {% block main %}
   <div class="block content">
     <div class="inner">
-      <div class="demo-pageheader">
+      <div class="pageheader">
         <img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
         {{ aposArea(page, 'homepageText', {
           textOnly: true,

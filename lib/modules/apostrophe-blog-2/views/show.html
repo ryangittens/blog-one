@@ -1,9 +1,9 @@
 {%- extends 'layout.html' -%}
 {%- include 'blogMacros.html' -%}
-{# set class here for desired blog article effect #}
+{# set class here for desired blog article effect: side or fadeout #}
 {% set outerClass = "intro-effect-side blog-container container" %}
 
-{% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
+{% block bodyClass %}{{ super() }} blog-show-page{% endblock %}
 
 {# Article specific title tag, for Facebook, SEO, etc. #}
 {%- block title -%}
@@ -20,23 +20,22 @@
    -->  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }}
         </div>
         <div class="blog-title">
-          <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
           <h1>{{ page.title }}</h1>
-          {% if page.authorId %}
-            <p class="subline">by <strong> {{ page._author.title }} </strong></p>
-          {% endif %}
+            <p class="subline">
+              {{ page.subtitle }}
+            </p>
+            <p>
+              {% if page.authorId %}
+                by <strong> {{ page._author.title }} </strong> — 
+              {% endif %} 
+              Posted on <strong>{{ page.publishedAt | date('MMM Do, YYYY') }}</strong>
+            </p>
+            {% if page.tags|join(', ') %}
+            <span class="sticker">{{ page.tags|join(', ') }}</span>
+            {% endif %}
         </div>
       </div> <!-- blog-header end -->
-      <button class="trigger" data-info="Click to see the header effect"><span>Trigger</span></button>
-      <!-- uncomment for push effect
-      <div class="blog-title2">
-        <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
-        <h1>{{ page.title }}</h1>
-        {% if page.authorId %}
-          <p class="subline">by {{ page._author.title }}</p>
-        {% endif %}
-      </div>
-      -->
+      
   {% endblock %}
 
   {% block headerContent %}{% endblock %}
@@ -66,6 +65,7 @@
             </div>
           </div>
         </div>
+        <hr>
         <div class="content">
           {{ aposArea(page, 'body', {
             controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
@@ -151,8 +151,7 @@
           isRevealed, 
           noscroll, 
           isAnimating,
-          container = document.querySelector( '.blog-container' ),
-          trigger = container.querySelector( 'button.trigger' );
+          container = document.querySelector( '.blog-container' );
 
         function scrollY() {
           return window.pageYOffset || docElem.scrollTop;
@@ -220,7 +219,6 @@
         }
         
         window.addEventListener( 'scroll', scrollPage );
-        trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
       });
     </script>
   {% endblock %}

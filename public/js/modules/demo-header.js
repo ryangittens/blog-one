@@ -21,3 +21,19 @@ $(function(){
 	});
 
 })
+
+
+// automatic scrolling
+
+
+$('.scroll-button').on('click', function(e){
+var contentPosition = $('#scroll-animate-main').offset().top;	    
+  $('html, body').animate({
+      scrollTop : contentPosition
+    }, '500', 'swing');
+});
+
+//button pulsing
+setTimeout(function(){
+	$("#slide1").css('opacity', '1');
+},800);

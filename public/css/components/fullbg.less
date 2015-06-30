@@ -23,7 +23,7 @@ video {
     height: 100vh;
     width: 100vw;
     position: absolute;
-    z-index: -3;
+    z-index: -2;
 }
 
 /*------ full page intro ----------*/
@@ -45,4 +45,61 @@ video {
 .apos-modal-preview #video-viewport{
     position: relative;
     // :)
+}
+
+/************scroll button****************/
+.scroll-button {
+    display: block;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    margin-left: -20px;
+    background: url(http://i.piccy.info/i9/a1be584058f99cac264b0847ec951cff/1399723179/1673/744267/arrow.png) no-repeat;
+    transition: opacity 2s;
+    border: none;
+}
+
+.scroll-button:focus{
+    outline: none;
+}
+
+/*
+ * Flash animation
+*/
+ 
+@-webkit-keyframes flash {
+    0%, 50%, 100% {opacity: 1;}
+    25%, 75% {opacity: 0;}
+}
+@keyframes flash {
+    0%, 50%, 100% {opacity: 1;}
+    25%, 75% {opacity: 0;}
+}
+.flash {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation: flash 3s infinite; /* Chrome, Safari, Opera */
+    animation: flash 3s infinite;
+
+}
+
+/*******layout**************/
+.header-inner{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin: 0 auto;
+    will-change: transform;
+    will-change: opacity;
+    transform: translateZ(0);
+    .intro{
+        margin: 0 auto;
+        top: 40%;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+    }
 }

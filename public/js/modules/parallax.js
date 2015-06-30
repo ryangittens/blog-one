@@ -36,6 +36,13 @@ $(window).load(function(){
     window.onscroll = function(){
         var scroll = window.scrollY;
 
+        $('.header-inner').css({
+            '-ms-transform' : 'translateY(' + -(scroll * 100)/heightDocument + '%)',
+            '-webkit-transform' : 'translateY(' + -(scroll * 100)/heightDocument + '%)',
+            'transform' : 'translateY(' + -(scroll * 100)/heightDocument + '%)',
+            'opacity' : 1 - 1.5*(scroll/windowHeight)
+        });
+
         $('#scroll-animate-main').css({
             '-ms-transform' : 'translateY(-' + scroll + 'px)',
             '-webkit-transform' : 'translateY(-' + scroll + 'px)',
