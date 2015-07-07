@@ -1,0 +1,197 @@
+/* Common style */
+.blog-wrap{
+}
+
+.column.grid{
+	margin: 0;
+	padding: 1.2rem;
+}
+
+
+.grid figure{
+	.blog-card-title, .details, .blog-card-title-container, .overlay{
+		will-change: transform;
+		will-change: opacity;
+		transform: translateZ(0);
+	}
+}
+
+.grid figure {
+	position: relative;
+	overflow: hidden;
+	margin: 10px auto;
+	//min-width: 320px;
+	max-width: 770px;
+	//max-height: 360px;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+.grid figure img {
+	position: relative;
+	display: block;
+	min-height: 100%;
+	max-width: 100%;
+}
+
+.grid figure figcaption {
+	 padding: .5em 0;
+    text-align: center;
+    -webkit-font-smoothing: subpixel-antialiased;
+	text-transform: uppercase;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+	pointer-events: none;
+}
+
+.grid figure > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure > a {
+	z-index: 1000;
+	text-indent: 200%;
+	white-space: nowrap;
+	font-size: 0;
+	opacity: 0;
+	position: absolute;
+}
+
+.grid figure h4 {
+	word-spacing: -0.15em;
+	font-weight: 300;
+	position: relative;
+	font-size: 1em;
+	bottom: 0;
+	display: inline;
+}
+
+.grid figure h4 span{
+	text-transform: capitalize;
+	margin-left: 1em;
+	opacity: 0.8;
+}
+
+/* Individual effects */
+
+figure.effect-marley .overlay{
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+
+	.title{
+		position: absolute;
+		top: 40%;
+		text-align: center;
+		width: 100%;
+		.blog-card-title{
+			.Karla(@text-medium);
+			text-transform: uppercase;
+			word-spacing: 0;
+		}
+	}
+
+	.details{
+		opacity: 0;
+		letter-spacing: 1px;
+		.Karla(@text-tiny);
+		position: absolute;
+		right: 30px;
+		left: 30px;
+		padding: 10px 0;
+		bottom: 30px;
+		line-height: 1.5;
+		.tags{
+			background: rgba(255, 255, 255, 0.5);
+			border-radius: 5px;
+			padding: 5px;
+		}
+	}
+}
+
+figure.effect-marley img.apos-slideshow-image, figure.effect-marley figcaption, .overlay {
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+figure.effect-marley {
+	.details{
+		opacity: 0;
+		-webkit-transform: translate3d(0,100%,0);
+		transform: translate3d(0,100%,0);
+		-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+		-moz-transition: opacity 0.35s, -webkit-transform 0.35s;
+		-o-transition: opacity 0.35s, -webkit-transform 0.35s;
+		transition: opacity 0.35s, transform 0.35s;
+	}
+}
+
+figure.effect-marley:hover{
+	img.apos-slideshow-image {
+		-moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -webkit-filter: grayscale(100%);
+  		filter: gray;
+  		filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+	}
+	.details{
+		opacity: 1;
+	    -webkit-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+	figcaption{
+		opacity: 0;
+		-webkit-transform: translate3d(0,100%,0);
+		transform: translate3d(0,100%,0);
+	}
+	.overlay{
+		opacity: 1;
+	}
+} 
+
+
+.glass {
+  padding: 10px 0;
+  border-top: 1px solid;
+  border-top-color: #ccc;
+  border-top-color: rgba(255,255,255, 0.2);
+  background-color: rgba(255,255,255, 0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 1190px)  {
+	.column.grid {
+		text-align: center;
+		margin: 0;
+		width: 50%;
+	}
+}
+
+@media screen and @narrow  {
+	.column.grid {
+		width: 100%;
+	}
+}

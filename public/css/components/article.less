@@ -3,12 +3,14 @@
 html, body, .container, .blog-header {
 	height: 100%;
 }
-
-.header, .subline{
-	will-change: transform;
-	will-change: opacity;
-	transform: translateZ(0);
+.blog-header{
+	.header, .blog-title p, .sticker, .blog-title h1{
+		will-change: transform;
+		will-change: opacity;
+		transform: translateZ(0);
+	}
 }
+
 
 .blog-container{
 	min-height: 100%;
@@ -65,7 +67,7 @@ html, body, .container, .blog-header {
 	transform: translateX(-50%) translateY(-50%);
 }
 
-.blog-title, .blog-title2{
+.blog-title{
 	h1{
 		padding: 0 0 0.2em;
 		color: #ddd;
@@ -75,7 +77,7 @@ html, body, .container, .blog-header {
 	}	
 }
 
-.blog-title, .blog-title2{
+.blog-title{
 	 p {
 		color: #fff;
 		padding: 0 0 0.6em;
@@ -85,13 +87,13 @@ html, body, .container, .blog-header {
 	}
 }
 
-.blog-title, .blog-title2{
+.blog-title{
 	h1, p.subline{
 		line-height: 1;
 	}
 }
 
-.blog-title, .blog-title2{
+.blog-title{
 	p.subline {
 		font-size: 1.75em;
 	} 
@@ -243,23 +245,42 @@ html, body, .container, .blog-header {
 	transform: translateZ(0);
 }
 
-.intro-effect-side:not(.notrans) .blog-header p {
+.intro-effect-side:not(.notrans) .blog-header p, .intro-effect-side .bg-img::after {
 	-webkit-transition-property: -webkit-transform, opacity;
 	transition-property: transform, opacity;
 }
 
 .intro-effect-side:not(.notrans) .blog-title,
 .intro-effect-side:not(.notrans) .blog-header p,
-.intro-effect-side:not(.notrans) .blog-header .sticker {
+.intro-effect-side:not(.notrans) .blog-header .sticker,
+.intro-effect-side .bg-img::after {
 	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 	-webkit-transition-duration: 0.5s;
 	transition-duration: 0.5s;
 }
 
-.intro-effect-side .bg-img{
+.intro-effect-side .bg-img::after {
+	will-change: transform;
+		will-change: opacity;
+		transform: translateZ(0);
+	content: '';
+	position: fixed;
+	z-index: 100;
 }
 
+.intro-effect-side .bg-img::after {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(255,255,255,0.5);
+	opacity: 1;
+}
+
+.intro-effect-side.modify .bg-img::after {
+	opacity: 0;
+}
 
 .intro-effect-side .bg-img{
    -webkit-clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%);

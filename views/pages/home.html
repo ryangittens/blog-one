@@ -15,7 +15,15 @@
     </div>
     <div class="header-inner">
       <div class="intro">
-        <h1>This is an Intro!</h1>
+        {{ aposArea(page, 'header', {
+          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
+          styles: [
+            { value: 'p', label: 'Text' },
+            { value: 'h1', label: 'Title' },
+            { value: 'h3', label: 'Subtitle' }
+          ],
+          lockups: ['left', 'right']
+        }) }}
       </div>
       <button type="button" class="scroll-button flash"></button>
     </div>
@@ -53,7 +61,7 @@
   </div>
 
   <div class="block bg-gray block--5">
-    <div class="inner">
+    <div class="blog-wrap">
       {{ aposSingleton(page, 'blogWidget', 'blog', { limit: 3 }) }}
     </div>
   </div>

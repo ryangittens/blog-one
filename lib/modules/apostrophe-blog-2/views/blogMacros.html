@@ -32,10 +32,10 @@
   </li>
 {%- endmacro -%}
 
-{%- macro blogCard(piece) -%}
+{%- macro demoBlogCard(piece) -%}
   <div class="column width-30">
     <div class="demo-blog-card">
-      <div class="blog-card-head">
+      
         {{ aposSingleton(piece, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false, size: 'one-third' }) }}
         <div class="blog-card-title-container">
           <a href="{{ piece.url }}"><h6 class="blog-card-title">{{ piece.title }}</h6></a>
@@ -50,5 +50,40 @@
       </div>
     </div>
     <span class="sticker sticker--overlap">{{ piece.publishedAt | date('MMM Do, YYYY') }}</span>
+  </div>
+{%- endmacro -%}
+
+{%- macro blogCard(piece) -%}
+  <div class="column width-33 grid">
+    <figure class="effect-marley">
+      <a href="{{ piece.url }}">Read More</a>
+          {{ aposSingleton(piece, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false, size: 'two-thirds' }) }}
+          <figcaption class="blog-card-title-container glass">
+            <h4 class="blog-card-title">
+              {{ piece.title }}
+              <span class="date">
+              {{ piece.publishedAt | date('MMM Do, YYYY') }}
+              </span>
+            </h4>
+          </figcaption>
+          <div class="overlay glass">
+            <div class="title">
+              <h4 class="blog-card-title">
+                {{ piece.title }}
+              </h4>
+              {% if piece.subtitle %}
+              <p class="blog-card-excerpt">{{ piece.subtitle }}</p>
+              {% else %}
+              <p class="blog-card-excerpt">{{ aposAreaPlaintext(piece, 'body', { truncate: 50 }) }}</p>
+              {% endif %} 
+            </div>
+            <div class="details">
+              {{ piece.publishedAt | date('MMM Do, YYYY') }}
+              {% if piece.tags|join(', ') %}
+              <span class="tags">{{ piece.tags|join(', ') }}</span> 
+              {% endif %}
+            </div>
+          </div>
+    </figure>
   </div>
 {%- endmacro -%}
