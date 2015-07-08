@@ -18,9 +18,37 @@ function scrollFooter(scrollY, heightFooter)
              'transform' : 'translateY(0)'
         });
     }
-}
+};
+
+function isTouchDevice(){
+    var deviceAgent = navigator.userAgent.toLowerCase();
+
+    var isTouchDevice = ('ontouchstart' in document.documentElement) || 
+    (deviceAgent.match(/(iphone|ipod|ipad)/) ||
+    deviceAgent.match(/(android)/)  || 
+    deviceAgent.match(/(iemobile)/) || 
+    deviceAgent.match(/iphone/i) || 
+    deviceAgent.match(/ipad/i) || 
+    deviceAgent.match(/ipod/i) || 
+    deviceAgent.match(/blackberry/i) || 
+    deviceAgent.match(/bada/i));
+
+    return isTouchDevice;
+
+};
 
 $(window).load(function(){
+    // if not touch device, enable easing on scroll because it doesn't work well for touch
+      if (!isTouchDevice()) {
+            console.log("not touch");
+            $('#scroll-animate-main').addClass('smooth-scroll');
+            $('#scroll-animate-main').addClass('smooth-scroll');
+            $('#scroll-animate-main').addClass('smooth-scroll');
+        } else {
+            console.log("touch");
+        };
+
+
     //NB outerHeight vs height and .offset vs .position jquery!
     var windowHeight        = $(window).height(),
         footerHeight        = $('footer').outerHeight(),
