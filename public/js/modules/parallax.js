@@ -42,8 +42,8 @@ $(window).load(function(){
       if (!isTouchDevice()) {
             console.log("not touch");
             $('#scroll-animate-main').addClass('smooth-scroll');
-            $('#scroll-animate-main').addClass('smooth-scroll');
-            $('#scroll-animate-main').addClass('smooth-scroll');
+            $('footer').addClass('smooth-scroll');
+            $('.header-inner').addClass('smooth-scroll');
         } else {
             console.log("touch");
         };
