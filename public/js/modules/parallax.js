@@ -38,6 +38,8 @@ function isTouchDevice(){
 };
 
 function initParallax(){
+    //trigger recalculation
+    document.body.style.visibility = "visible";
     // if not touch device, enable easing on scroll because it doesn't work well for touch
       if (!isTouchDevice()) {
             console.log("not touch");
