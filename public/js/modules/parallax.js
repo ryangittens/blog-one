@@ -85,6 +85,4 @@ $(window).load(function(){
     initParallax();
 });
 
-$( window ).on( "orientationchange", function( event ) {
-  initParallax();
-});
+window.addEventListener('orientationchange', initParallax);
