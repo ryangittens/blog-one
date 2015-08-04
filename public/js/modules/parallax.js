@@ -37,7 +37,8 @@ function isTouchDevice(){
 
 };
 
-$(window).load(function(){
+
+$(window).on("orientationchange", function(e){
     // if not touch device, enable easing on scroll because it doesn't work well for touch
       if (!isTouchDevice()) {
             console.log("not touch");
@@ -80,3 +81,5 @@ $(window).load(function(){
         scrollFooter(scroll, footerHeight);
     }
 });
+
+$( window ).orientationchange();
