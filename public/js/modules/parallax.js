@@ -87,6 +87,12 @@ $(window).load(function(){
     initParallax();
 });
 
+//if anything has been resized, run resize the parallax container
+window.addEventListener('resize', function(){
+    setTimeout(initParallax, 1000);
+});
+
+
 window.addEventListener('orientationchange', function(){
     setTimeout(initParallax, 1000);
 });

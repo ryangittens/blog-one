@@ -128,7 +128,7 @@ site.init({
         {
           name: 'backgroundVideo',
           label: 'Background Video',
-          instructions: 'Enter a video url and select fallback image. Just an image can be used if you don\' want video',
+          instructions: 'Enter a video url and select fallback image. Just an image can be used if you don\'t want video',
           schema: [
             {
               name: 'img',
