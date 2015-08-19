@@ -84,13 +84,30 @@ function initParallax(){
 };
 
 $(window).load(function(){
-    initParallax();
+    //initParallax(); checkForchanges already triggers this and triggering it twice causes problems
+    checkForChanges();
 });
 
-//if anything has been resized, run resize the parallax container
+//if window is resized, trigger initParallax
 window.addEventListener('resize', function(){
     setTimeout(initParallax, 1000);
+    console.log("resized");
 });
+
+//check if height of parallax-wrapper changes, if it does trigger initParallax
+// get height of parallax-wrapper
+var lastHeight = $(".wrapper-parallax").outerHeight();
+function checkForChanges()
+{
+    if ($(".wrapper-parallax").outerHeight() != lastHeight)
+    {
+        initParallax(); 
+        console.log('height changed');
+        lastHeight = $(".wrapper-parallax").outerHeight();
+    }
+
+    setTimeout(checkForChanges, 500);
+}
 
 
 window.addEventListener('orientationchange', function(){
