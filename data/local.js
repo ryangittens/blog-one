@@ -50,6 +50,7 @@ module.exports = {
   // you can uncomment this and get more specific.
   db: {
     uri: 'mongodb://admin:demo@ds035250.mongolab.com:35250/heroku_d06tv27m'
+    //uri: 'mongodb://localhost:27017/apostrophe-sandbox'
 
     // There is legacy support for host, port, name, user and password options,
     // but this is not necessary. They can all go in the uri option like this:

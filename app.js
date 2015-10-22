@@ -3,16 +3,11 @@ var fs = require('fs');
 
 var site = require('apostrophe-site')();
 
+ 
+
+
 site.init({
 
-  //Amazon S3 setup for file storage
-  uploadfs: {
-  backend: 's3',
-  secret: '736SZTsC2bxnOqFyh+SeYO1X7dLrnT1UCLqwVcZ4',
-  key: 'AKIAJ2JSDD5X6H3WCTWQ',
-  bucket: 'blog-one',
-  region: 'Oregon'
-}
 
   // This line is required and allows apostrophe-site to use require() and manage our NPM modules for us.
   root: module,
@@ -79,6 +74,15 @@ site.init({
       }
     }
   },
+
+   //Amazon S3 setup for file storage
+  uploadfs: {
+  backend: 's3',
+  secret: '736SZTsC2bxnOqFyh+SeYO1X7dLrnT1UCLqwVcZ4',
+  key: 'AKIAJ2JSDD5X6H3WCTWQ',
+  bucket: 'blog-one',
+  region: 'Oregon'
+},
 
   // These are the modules we want to bring into the project.
   modules: {
