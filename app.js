@@ -78,8 +78,8 @@ site.init({
    //Amazon S3 setup for file storage
   uploadfs: {
   backend: 's3',
-  secret: '736SZTsC2bxnOqFyh+SeYO1X7dLrnT1UCLqwVcZ4',
-  key: 'AKIAJ2JSDD5X6H3WCTWQ',
+  secret: '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',
+  key: 'AKIAIZ3SFFJWZ7Y5MDKA',
   bucket: 'blog-one',
   region: 'Oregon'
 },
