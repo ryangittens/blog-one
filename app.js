@@ -75,14 +75,7 @@ site.init({
     }
   },
 
-   //Amazon S3 setup for file storage
-  uploadfs: {
-  backend: 's3',
-  secret: 'ZTDwVLegsYY0u9Z0ApYrzriStgaOja+q75DjXvE2',
-  key: 'AKIAIZ3SFFJWZ7Y5MDKA',
-  bucket: 'blog-one',
-  region: 'Oregon'
-},
+   
 
   // These are the modules we want to bring into the project.
   modules: {
@@ -170,6 +163,15 @@ site.init({
     stylesheets: ['site'],
     scripts: ['_site-compiled']
   },
+
+  //Amazon S3 setup for file storage
+  uploadfs: {
+  backend: 's3',
+  secret: 'ZTDwVLegsYY0u9Z0ApYrzriStgaOja+q75DjXvE2',
+  key: 'AKIAIZ3SFFJWZ7Y5MDKA',
+  bucket: 'blog-one',
+  region: 'us-west-2'
+},
 
   afterInit: function(callback) {
     // We're going to do a special console message now that the
