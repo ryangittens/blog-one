@@ -99,7 +99,6 @@ window.addEventListener('resize', function(){
 var lastHeight = $(".wrapper-parallax").outerHeight();
 function checkForChanges()
 {
-    initParallax();
     if ($(".wrapper-parallax").outerHeight() != lastHeight)
     {
         initParallax(); 
