@@ -84,8 +84,8 @@ function initParallax(){
 };
 
 $(window).load(function(){
-    //initParallax(); checkForchanges already triggers this and triggering it twice causes problems
-    checkForChanges();
+    initParallax(checkForChanges()); //checkForchanges already triggers this and triggering it twice causes problems
+    
 });
 
 //if window is resized, trigger initParallax
