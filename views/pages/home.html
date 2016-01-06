@@ -31,7 +31,7 @@
   {% endblock %}
 
 {% block main %}
-  <div class="block content--bottom">
+  <div class="block content">
     <div class="inner">
       <div class="pageheader">
         <!--<img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">-->
@@ -45,7 +45,7 @@
       </div>
     </div>
     <!--<div class="demo-workspaces-marquee"></div>-->
-    <!--<div class="block content--bottom">-->
+    <div class="block content--bottom">
       <div class="inner demo-pageheader">
         {{ aposArea(page, 'main', {
           controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
@@ -57,7 +57,7 @@
           lockups: ['left', 'right']
         }) }}
       </div>
-    <!--</div>-->
+    </div>
   </div>
 
   <div class="block bg-gray block--5">
